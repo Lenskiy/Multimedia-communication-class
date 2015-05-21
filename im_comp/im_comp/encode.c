@@ -55,6 +55,14 @@ int main(int argc, const char * argv[]) {
 
 	print_elements ( 8,  dctBlocks8x8[10] );
 
+	quantize_block ( dctBlocks8x8[10] );
+	printf("\nQuantized DCT:\n");
+	print_elements ( 8,  dctBlocks8x8[10] );
+
+	inverse_quantize_block(dctBlocks8x8[10]);
+	printf("\nInverse quantized DCT:\n");
+	print_elements ( 8,  dctBlocks8x8[10] );
+
 //    * Split into 8 x 8 blocks and apply DCT to every block
 //    * Quantize DCT coefficients
 //    * Apply zigzag reordering
