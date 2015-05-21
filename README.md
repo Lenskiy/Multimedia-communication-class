@@ -181,7 +181,7 @@ __./encode image.pbm > run3d.code__
 * Read run-level code from a standard input. To do so, redirect standard input form a keyboard to from a file i.e.
 __./encode image_t.pbm < run3d.code__
 * Decode run-level code
-* Apply inverse zigzard ordering
+* Apply inverse zigzag ordering
 * Inverse quantize DCT coefficients
 * Perform IDCT or every DCT block, and assemble the image
 * Store the reconstructed image into a PBM file
@@ -192,7 +192,7 @@ __./encode image_t.pbm < run3d.code__
 * Read original image.pbm and reconstructed image_t.pbm
 * Calculate and print out the PSNR. The PSNR is calculated as follows
 
-`MSE = (1/(m*n))*sum(sum((f-g).^2))`
+`MSE = (1/(m*n))*sum(sum((f-g)^2))`
 
 `PSNR = 20*log(max(max(f)))/((MSE)^0.5)`
 
