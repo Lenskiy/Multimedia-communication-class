@@ -7,8 +7,8 @@
 //
 
 #include <stdio.h>
-#include "im_comp.h"
 #include "pbm.h"
+#include "im_comp.h"
 
 int main(int argc, const char * argv[]) {
 //    * Read a grayscale P5 type PBM image
