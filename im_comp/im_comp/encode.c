@@ -9,10 +9,42 @@
 #include <stdio.h>
 #include "pbm.h"
 #include "im_comp.h"
+#include "dct.h"
 
 int main(int argc, const char * argv[]) {
 
-//    * Read a grayscale P5 type PBM image
+	unsigned char *data;
+	struct image_header ih;
+	unsigned long data_size;
+	FILE *fp;
+
+	if (argc != 3) {
+		printf("Not enough arguments, the program call should as follows: %s <input.pbm> <output.pbm>", argv[0]);
+		return 0;
+	}
+
+	data = readImage(argv[1], &data_size, &ih);
+
+	short row, col, i, j, r;
+	unsigned int b_num = 0;
+	unsigned char *p;
+	unsigned char blocks8x8[1024][64];
+
+	for ( row = 0; row < ih.rows; row += 16 ) {
+		for ( col = 0; col < ih.cols; col += 16 ) {
+			//points to beginning of a 8x8 block
+			p = data + (row * ih.cols + col);
+			r = 0; //note pointer arithmetic
+			for ( i = 0; i < 16; ++i ) {
+				for ( j = 0; j < 16; ++j )
+					blocks8x8[b_num++][r++] = p++;
+				p += (ih.cols-16); //points to next row within macroblock
+			}
+		} //for col
+	} //for row
+
+
+
 //    * Split into 8 x 8 blocks and apply DCT to every block
 //    * Quantize DCT coefficients
 //    * Apply zigzag reordering
