@@ -17,33 +17,43 @@ int main(int argc, const char * argv[]) {
 	struct image_header ih;
 	unsigned long data_size;
 	FILE *fp;
+	short F[8][8];
 
-	if (argc != 3) {
-		printf("Not enough arguments, the program call should as follows: %s <input.pbm> <output.pbm>", argv[0]);
+	if (argc != 2) {
+		printf("Not enough arguments, the program call should as follows: %s <input.pbm>", argv[0]);
 		return 0;
 	}
 
 	data = readImage(argv[1], &data_size, &ih);
 
 	short row, col, i, j, r;
-	unsigned int b_num = 0;
+	unsigned int cur_bnum = 0;
 	unsigned char *p;
-	unsigned char blocks8x8[1024][64];
+	unsigned num_blocks = 1024;
+	unsigned short blocks8x8[num_blocks][64];
+	unsigned short dctBlocks8x8[num_blocks][64];
 
-	for ( row = 0; row < ih.rows; row += 16 ) {
-		for ( col = 0; col < ih.cols; col += 16 ) {
+	for ( row = 0; row < ih.rows; row += 8 ) {
+		for ( col = 0; col < ih.cols; col += 8 ) {
 			//points to beginning of a 8x8 block
 			p = data + (row * ih.cols + col);
 			r = 0; //note pointer arithmetic
-			for ( i = 0; i < 16; ++i ) {
-				for ( j = 0; j < 16; ++j )
-					blocks8x8[b_num++][r++] = p++;
-				p += (ih.cols-16); //points to next row within macroblock
+			for ( i = 0; i < 8; ++i ) {
+				for ( j = 0; j < 8; ++j ){
+					blocks8x8[cur_bnum][r++] = *p;
+					p++;
+				}
+				p += (ih.cols-8); //points to next row within macroblock
 			}
+			r = 0;
+			cur_bnum++;
 		} //for col
 	} //for row
 
+	for(cur_bnum = 0; cur_bnum < num_blocks; cur_bnum++)
+		dct ( 8, blocks8x8[cur_bnum], dctBlocks8x8[cur_bnum] );
 
+	print_elements ( 8,  dctBlocks8x8[10] );
 
 //    * Split into 8 x 8 blocks and apply DCT to every block
 //    * Quantize DCT coefficients
