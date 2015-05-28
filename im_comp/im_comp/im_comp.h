@@ -18,19 +18,19 @@ struct Run3D {
 };
 
 
-void quantize_block ( short coef[8][8] );
+void quantize_block ( short *coef );
 //inverse quantize one block
-void inverse_quantize_block ( short coef[8][8] );
+void inverse_quantize_block ( short *coef );
 
 
 //input : Y,  output : Yr
-void reorder ( short Y[8][8], short Yr[8][8] );
+void reorder ( short *Y, short *Yr );
 //input : Yr, output : Y
-void reverse_reorder ( short Yr[8][8], short Y[8][8] );
+void reverse_reorder ( short *Yr, short *Y );
 
 
-void run_block ( short Y[8][8], struct Run3D runs[] );
-void run_decode (struct Run3D runs[], short Y[8][8] );
+void run_block ( short *Y, struct Run3D runs[] );
+void run_decode (struct Run3D runs[], short *Y );
 
 
 #endif /* defined(__im_comp__im_comp__) */

@@ -29,9 +29,10 @@ int main(int argc, const char * argv[]) {
 	short row, col, i, j, r;
 	unsigned int cur_bnum = 0;
 	unsigned char *p;
-	unsigned num_blocks = 1024;
+	unsigned num_blocks = ih.cols * ih.rows / 64;
 	unsigned short blocks8x8[num_blocks][64];
-	unsigned short dctBlocks8x8[num_blocks][64];
+	short dctBlocks8x8[num_blocks][64];
+	short rDctBlocks8x8[num_blocks][64];
 
 	for ( row = 0; row < ih.rows; row += 8 ) {
 		for ( col = 0; col < ih.cols; col += 8 ) {
@@ -58,6 +59,10 @@ int main(int argc, const char * argv[]) {
 	quantize_block ( dctBlocks8x8[10] );
 	printf("\nQuantized DCT:\n");
 	print_elements ( 8,  dctBlocks8x8[10] );
+
+//	for (i = 0; i < num_blocks ;i++)
+//		reorder ( dctBlocks8x8[i], rDctBlocks8x8 );
+
 
 	inverse_quantize_block(dctBlocks8x8[10]);
 	printf("\nInverse quantized DCT:\n");
