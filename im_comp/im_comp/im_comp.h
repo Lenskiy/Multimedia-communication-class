@@ -20,7 +20,7 @@ struct Run3D {
 
 void quantize_block ( short *coef );
 //inverse quantize one block
-void inverse_quantize_block ( short *coef );
+void inverse_quantrun_blockize_block ( short *coef );
 
 
 //input : Y,  output : Yr

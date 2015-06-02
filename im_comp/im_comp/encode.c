@@ -33,6 +33,8 @@ int main(int argc, const char * argv[]) {
 	unsigned short blocks8x8[num_blocks][64];
 	short dctBlocks8x8[num_blocks][64];
 	short rDctBlocks8x8[num_blocks][64];
+	struct Run3D runs[num_blocks][64];
+
 
 	for ( row = 0; row < ih.rows; row += 8 ) {
 		for ( col = 0; col < ih.cols; col += 8 ) {
@@ -54,19 +56,47 @@ int main(int argc, const char * argv[]) {
 	for(cur_bnum = 0; cur_bnum < num_blocks; cur_bnum++)
 		dct ( 8, blocks8x8[cur_bnum], dctBlocks8x8[cur_bnum] );
 
-	print_elements ( 8,  dctBlocks8x8[10] );
+//	print_elements ( 8,  dctBlocks8x8[10] );
 
 	quantize_block ( dctBlocks8x8[10] );
-	printf("\nQuantized DCT:\n");
-	print_elements ( 8,  dctBlocks8x8[10] );
+//	printf("\nQuantized DCT:\n");
+//	print_elements ( 8,  dctBlocks8x8[10] );
 
-//	for (i = 0; i < num_blocks ;i++)
-//		reorder ( dctBlocks8x8[i], rDctBlocks8x8 );
+	for (i = 0; i < num_blocks ;i++)
+		reorder ( dctBlocks8x8[i], rDctBlocks8x8[i] );
+
+//	printf("\n");
+//	for (i = 0; i < 64; i++)
+//		printf("%d ", rDctBlocks8x8[10][i]);
+
+	for (i = 0; i < num_blocks; i++)
+		run_block ( rDctBlocks8x8[i], &runs[i] );
+
+	//printf("\n");
+
+	for(cur_bnum = 0; cur_bnum < num_blocks; cur_bnum++){
+		i = -1;
+		do{
+			i++;
+			printf("%d,%d,%d\n", 	runs[cur_bnum][i].run,
+									runs[cur_bnum][i].level,
+									runs[cur_bnum][i].last);
+		}while(runs[10][i].last == 0);
+	}
 
 
-	inverse_quantize_block(dctBlocks8x8[10]);
-	printf("\nInverse quantized DCT:\n");
-	print_elements ( 8,  dctBlocks8x8[10] );
+	for(cur_bnum = 0; cur_bnum < num_blocks; cur_bnum++){
+		i = -1;
+		do{
+			i++;
+			printf("%d,%d,%d\n", 	runs[cur_bnum][i].run,
+									runs[cur_bnum][i].level,
+									runs[cur_bnum][i].last);
+		}while(runs[10][i].last == 0);
+	}
+//	inverse_quantize_block(dctBlocks8x8[10]);
+//	printf("\nInverse quantized DCT:\n");
+//	print_elements ( 8,  dctBlocks8x8[10] );
 
 //    * Split into 8 x 8 blocks and apply DCT to every block
 //    * Quantize DCT coefficients

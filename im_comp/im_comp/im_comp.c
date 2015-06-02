@@ -64,14 +64,15 @@ void reverse_reorder ( short *Yr, short *Y ){
 
 
 
-void run_block ( short *Y, struct Run3D runs[] ){
+void run_block ( short *Y, struct Run3D *runs ){
     unsigned char run_length = 0, k = 0;
     int i,j;
     for ( i = 0; i < 8; i++ ) {
         for ( j = 0; j < 8; j++ ) {
-            if(Y[i * 8 + j]==0 ){
+            if(Y[i * 8 + j] == 0 ){
                 run_length++;
-                continue; }
+                continue;
+            }
             runs[k].run = run_length;
             runs[k].level = Y[i * 8 + j];
             runs[k].last = 0;
