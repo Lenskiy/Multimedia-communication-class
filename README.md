@@ -114,7 +114,7 @@ __./entropy < main.c__
 //randtest.cpp: Generates 10000 bytes of data
 //Compile: gcc -o randtest randtest.cpp
 #include <stdio.h>
-__./entropy < main.c__#include <stdlib.h>
+#include <stdlib.h>
 #include <math.h>
 int main() {
     int x;
@@ -202,3 +202,64 @@ __./encode image_t.pbm < run3d.code__
 
 `PSNR = 20*log(max(max(f)))/((MSE)^0.5)`
 
+
+###Lab:  Huffman coding
+
+######Problem 1. Huffman tree traversal
+
+*Implement the following code:
+```
+#include <stdio.h>
+
+char huff_decode(unsigned char htree[], int N, unsigned char buffer[], unsigned long *bit_num){
+    int loc0, loc = 3 * N - 3;             //start from root, N = # of symbols
+    do {
+        loc0 = loc;                //in is data pointer pointing to
+        //  encoded data
+        if ( read_one_bit(buffer, (*bit_num)++) == 0 ) //a 0, go left
+            loc = htree[loc0];
+        else
+            loc =  htree[loc0 - 1];  //a 1, go right
+    } while ( loc >= N );        //traverse until reach leaf
+
+    return htree[loc];           //return symbol
+}
+
+
+int main(int argc, const char * argv[]) {
+    static unsigned long bit_num = 0;
+    unsigned char buffer[] = {74, 191, 186, 128};
+    unsigned char htree[] = {'a', 'b', 'c', 'd', 'e', 3, 2, 6, 1, 4, 8, 10, 0};
+
+    printf("Decoded sequence: ");
+    do{
+        printf("%c", huff_decode(htree, 5, buffer,  &bit_num));
+    }while(bit_num < sizeof(buffer) * 8);
+
+    return 0;
+}
+```
+* Feel up htree with a different Huffman tree
+* Change content of the buffer accordingly
+
+######Problem 2. Alternative repesenation of a Huffman tree
+* Change and test the modified decoding function given as follows:
+```
+char huff_decode2(unsigned char htree[], int N, unsigned char buffer[], unsigned long *bit_num){
+    //N = # of symbols
+    unsigned short left_mask = 0xFF00; //to extract upper byte(left child)
+    unsigned short  right_mask = 0x00FF; //to extract lower byte(right child)
+    int loc0, loc = ( N - 1 ) + N; //start from root; add offset N to
+    // distinguish pointers from symbols
+
+    do {
+        loc0 = loc - N;
+        if ( read_one_bit(buffer, (*bit_num)++) == 0 ){  //a 0, go left
+            loc = ( htree[loc0] & left_mask ) >> 8;
+        } else{
+            loc =  htree[loc0] & right_mask;
+        }
+    } while ( loc >= N );       //traverse until reaches leaf
+    return loc;                 //symbol value = loc
+}
+```
