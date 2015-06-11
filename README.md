@@ -134,6 +134,12 @@ Modify your program in such way that its source size is minimized, then calculat
 
 ###Lab: Block representation
 
+######Problem 1: Implement the function that splits a grayscale image into an array of blocks of a given size
+
+######Problem 2: Implement the function that splits an RGB image into RGB macroblocks of 16x16 size
+
+######Problem 3: Implement the function that splits an RGB image into macroblocks and converts them to YCbCr using 4:2:0  
+
 ###Lab: Discrete cosine transform
 
 ######Problem 1.  Test the DCT and IDCT functions
