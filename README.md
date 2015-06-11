@@ -207,7 +207,7 @@ __./encode image_t.pbm < run3d.code__
 
 ######Problem 1. Huffman tree traversal
 
-*Implement the following code:
+* Implement the following code:
 ```
 #include <stdio.h>
 
