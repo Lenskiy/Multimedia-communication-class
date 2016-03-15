@@ -1,36 +1,8 @@
 # Digital-broadcasting
 
-###Middle term project
+###Lab 1: Imaging basics
 
-The goal of the project is to develop image transmission software that uses RTP as a transport. Before the transmission an image is compressed. 
-
-The project employs RTP transmission software we studied before, and color compression that employs imperfections in human visual system. Thus, the software should include the following functionality
-
-* Reading and writing PBM files
-* Color space conversion RGB to YCbCr and YCbCr to RGB
-* Down and upsampling
-* Sending and receiving data using RTP
-
-For simplicity assume that receiver knows parameters of the image being transmitted. Make sure that the image is transmitted in a compressed form.
-
-The main function of the sender can be represented in the flow chart shown below:
-
-`Read a PBM image --> Convert to YCbCr --> Downsample Cb and Cr --> Send using RTP`
-
-The main function of the receiver can be represented in the flow chart shown below:
-
-`Receive using RTP --> Upsample --> Convert to RGB --> Write to a PBM file`
-
-
-You have to decide how compressed image is transmitted. Either every channel is transmitted separately i.e. with three different `rtp_send_packets calls`, or first you combine three color channels Y, Cb and Cr into a contiguous memory block and then send it at once.
-
-The submitted source codes should contain substantial amount of comments.
-
-
-
-###Lab: Imaging basics
-
-######Problem 1: Implement two function for reading and writing of the P5 and P6 type of PGM files i.e. binary and either grayscale or color images
+######Problem 1: Implement two functions, one for reading and one for writing of the PGM P5(binary, greyscale) and P6(binary, color) types
 
 The header for PGM files is defined as a C structure
 
@@ -42,63 +14,45 @@ struct image_header{
     int levels;     //Number of gray/each color levels
 };
 ```
-
 ######Problem 2: Implement RGB to YCbCr and YCbCr to RGB color space conversion
 
-The formulas for converion RGB to YCbCr color spaces using integer arithmetics is given below
+######Problem 3: Implement RGB to YCbCr and YCbCr to RGB color space conversion
+
+The formulas for transforming RGB to YCbCr color spaces using integer arithmetics are given below
 ```
 Y = ( 19595 * R + 38470 * G + 7471 * B ) >> 16;
 Cb = ( 36962 * ( B - Y ) >> 16) + 128;
 Cr = (46727 * ( R - Y ) >> 16) + 128;
 ```
-and for coverting back to RGB from YCbCr is as follows
+and the formulas for inverse transformation to RGB from YCbCr are as follows
 ```
 R = Y + (91881 * Cr >> 16) - 179;
 G = Y -( ( 22544 * Cb + 46793 * Cr ) >> 16) + 135;
 B = Y + (116129 * Cb >> 16) - 226;
 ```
-######Problem 3: Image down- and up-sampling
+######Problem 4: Image down- and up-sampling
 Implement two functions. The first function accepts a YCbCr image and returns downsampled Cb and Cr channels according to 4:2:0 scheme.
 
 The second function acceptes downsampled version of YCbCr image and upsamples it by simply copying each value to the four nearest neighbors in up-sampled image.
 ![alt text](http://i.stack.imgur.com/768xM.png "4:2:0")
 
-######Problem 4: Calculate PSNR
+######Problem 5: Calculate PSNR
 Implement a function that accepts two argumetns, which is an original image and areconstructed image and returns Peak Signal-to-Noise Ratio (PSNR). The PSNR is calcualted as follows
 
 `MSE = (1/(m*n))*sum(sum((f-g).^2))`
 
 `PSNR = 20*log(max(max(f)))/((MSE)^0.5)`
 
-######Problem 5: Test of the above function.
+######Problem 6: All the above functions should be tested in the following final program
 
 * Read a color PPM image.
+* Equalize histogram
 * Convert RGB image to YCbCr.
 * Down-sample YCbCr to 4:2:0, i.e. uses the 2:1 horizontal downsampling and the 2:1 vertical downsampling. You will irreversibly lose information here.
 * Up-sample Cb and Cr channels to the original resolution
 * Convert obtained YCbCr image to RGB image.
 * Calculate PSNR between original RGB image and the reconstructed one.
 
-
-###Lab: Real-time Transfer Protocol
-
-######Problem 1:  Download the source codes attached. Build sender and receiver. To build use the following commands in the terminal:
-__gcc receiver.c rtp.c -o receiver__
-
-__gcc sender.c rtp.c -o sender__
-
-Select an image file of your choice, and execute the receiver as follows
-
- __./receiver 12345 > image_rcv.jpg__
-
- then in a new terminal window execute
-
- __./sender 127.0.0.1 12345 < image.jpg__
-
- where 12345 is a port of a receiver and image.jpg is your image file.
- The symbols < and > are used to redirect standard output and input.  By typing sender < image.jpg we redirect input from a file, instead of a keyboard and by typing receiver > image_rcv.jpg  we redirect output to  a file instead of a screen.
-
-######Problem 2:  Study source codes very carefully and add detailed comments for as many statements as you think is necessary, keeping in mind that the more the better. The goal of this problem is to understand the codes in depth.  
 
 ###Lab: Information theory
 
@@ -263,3 +217,52 @@ char huff_decode2(unsigned char htree[], int N, unsigned char buffer[], unsigned
     return loc;                 //symbol value = loc
 }
 ```
+
+
+###Lab: Real-time Transfer Protocol
+
+######Problem 1:  Download the source codes attached. Build sender and receiver. To build use the following commands in the terminal:
+__gcc receiver.c rtp.c -o receiver__
+
+__gcc sender.c rtp.c -o sender__
+
+Select an image file of your choice, and execute the receiver as follows
+
+__./receiver 12345 > image_rcv.jpg__
+
+then in a new terminal window execute
+
+__./sender 127.0.0.1 12345 < image.jpg__
+
+where 12345 is a port of a receiver and image.jpg is your image file.
+The symbols < and > are used to redirect standard output and input.  By typing sender < image.jpg we redirect input from a file, instead of a keyboard and by typing receiver > image_rcv.jpg  we redirect output to  a file instead of a screen.
+
+######Problem 2:  Study source codes very carefully and add detailed comments for as many statements as you think is necessary, keeping in mind that the more the better. The goal of this problem is to understand the codes in depth.  
+
+
+
+###Final project
+
+The goal of the project is to develop image transmission software that uses RTP as a transport. Before the transmission an image is compressed. 
+
+The project employs RTP transmission software we studied before, and color compression that employs imperfections in human visual system. Thus, the software should include the following functionality
+
+* Reading and writing PBM files
+* Color space conversion RGB to YCbCr and YCbCr to RGB
+* Down and upsampling
+* Sending and receiving data using RTP
+
+For simplicity assume that receiver knows parameters of the image being transmitted. Make sure that the image is transmitted in a compressed form.
+
+The main function of the sender can be represented in the flow chart shown below:
+
+`Read a PBM image --> Convert to YCbCr --> Downsample Cb and Cr --> Send using RTP`
+
+The main function of the receiver can be represented in the flow chart shown below:
+
+`Receive using RTP --> Upsample --> Convert to RGB --> Write to a PBM file`
+
+
+You have to decide how compressed image is transmitted. Either every channel is transmitted separately i.e. with three different `rtp_send_packets calls`, or first you combine three color channels Y, Cb and Cr into a contiguous memory block and then send it at once.
+
+The submitted source codes should contain substantial amount of comments.
