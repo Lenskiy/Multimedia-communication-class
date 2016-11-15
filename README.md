@@ -1,4 +1,4 @@
-# Digital-broadcasting
+# Multimedia communication
 
 ###Lab 1: Imaging basics
 
