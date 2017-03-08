@@ -10,14 +10,14 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 ###Lab: Command line interface in Linux, Building tools
 
 ###### Problem 1. Command Line Interface of Linux (See "The linux Command Line" textbook for further details)
-* (a)	Open terminal (hint: press Ctrl Alt t)
-* (b)	Create folder c_language in your home folder ~/ (hint: use mkdir)
-* (c)	 Create folder lab1in the folder c_language (hint: use mkdir)
-* (d)	 Enter the folder ~/c_language/lab1(hint: use cd)
-* (e)	 Create file first.c (hint: use touch) 
-* (f)	Copy first.c to second.c in the same folder (hint: use cp)
-* (g)	 Delete second.c (hint: use rm)
-* (h)	 Rename first.c to lab1.c (hint use mv)
+1.	Open terminal (hint: press Ctrl Alt t)
+2.	Create folder c_language in your home folder ~/ (hint: use mkdir)
+3.	Create folder lab1in the folder c_language (hint: use mkdir)
+4.	Enter the folder ~/c_language/lab1(hint: use cd)
+5.	Create file first.c (hint: use touch) 
+6.	Copy first.c to second.c in the same folder (hint: use cp)
+7.	Delete second.c (hint: use rm)
+8.	Rename first.c to lab1.c (hint use mv)
 
 
 
