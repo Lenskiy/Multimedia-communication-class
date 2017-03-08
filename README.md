@@ -49,9 +49,11 @@ int main(){
 ```
 
 Create a text file input.txt with some content and build the C program, then tests as follows:
+
 1.	Creating a text file using nano:
 `nano test.txt`
 exit and save the file by pressing Ctrl X
+
 2.	Run the compiled program and redirect the input form a keyboard to from a file:
 `./ctest < test.txt`
 
