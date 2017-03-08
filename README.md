@@ -180,7 +180,7 @@ int main() {
     return 0;
 }
 ```
-* Use two PBM files attached as inputs for your program, compare the entropies of the content of each file.
+* Use two given PBM files: `nature.pbm` and 'urban.pbm' as inputs for your program, compare the entropies of these files.
 
 ######Problem 2: Compare the Shannon's entropy and the Kolmogorov's complexity
 
