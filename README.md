@@ -20,6 +20,52 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 8.	Rename first.c to lab1.c (_hint_ use mv)
 
 ###### Problem 2.  Install Eclipse. The process of eclipse installation and Java VM is performed in the shell. 
+1. 	Download eclipse for C++  (http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/mars2), 64 bit, 32 bit
+
+2. 	Extract the file by double clicking on the archive or by typing 
+
+tar xvfz eclipse-cpp-mars-2-linux-gtk-x86_64.tar.gz 
+or
+tar xvfz eclipse-cpp-mars-2-linux-gtk.tar.gz
+
+3. 	Eclipse is written in Java,  thus to run Eclipse you have to download Java Virtual Machine
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+4.	Create a folder as a super user (sudo)
+```
+sudo mkdir /usr/local/java
+```
+Copy the downloaded file to /usr/local/java by typing
+```
+sudo cp -r jdk-8u73-linux-x64.tar.gz /usr/local/java
+```
+or	
+``` 
+sudo cp -r jdk-8u73-linux-i586.tar.gz /usr/local/java
+```
+
+Unpack the compressed Java binaries, in the directory /usr/local/java
+```
+		sudo tar xvzf jdk-8u73-linux-x64.tar.gz 
+```
+or 	
+```
+    sudo tar xvzf jdk-8u73-linux-i586.tar.gz
+```
+5.	Type sudo nano /etc/profile
+Scroll down and add at the bottom of the file and the following
+````
+JRE_HOME=/usr/local/java/jdk1.8.0_73
+PATH=$PATH:$JRE_HOME/bin
+export JRE_HOME
+export PATH
+```
+6.	Inform your Ubuntu Linux system where your Oracle Java JDK/JRE is located by typing
+```
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.8.0_73/bin/java" 1
+sudo update-alternatives --set java /usr/local/java/jdk1.8.0_73/bin/java
+```
+7.	Test by typing in the shell: java -version
 
 ###### Problem 3. Create a C project in Eclipse by giving the following name cbasic, 
 
