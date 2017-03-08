@@ -45,11 +45,11 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 	```
 	Unpack the compressed Java binaries, in the directory /usr/local/java
 	```
-			sudo tar xvzf jdk-8u73-linux-x64.tar.gz 
+	sudo tar xvzf jdk-8u73-linux-x64.tar.gz 
 	```
 	or 	
 	```
-	    sudo tar xvzf jdk-8u73-linux-i586.tar.gz
+	sudo tar xvzf jdk-8u73-linux-i586.tar.gz
 	```
 5.	Type sudo nano /etc/profile
 	Scroll down and add at the bottom of the file and the following
