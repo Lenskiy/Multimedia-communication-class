@@ -118,8 +118,6 @@ struct image_header{
 ```
 ######Problem 2: Implement RGB to YCbCr and YCbCr to RGB color space conversion
 
-######Problem 3: Implement RGB to YCbCr and YCbCr to RGB color space conversion
-
 The formulas for transforming RGB to YCbCr color spaces using integer arithmetics are given below
 ```
 Y = ( 19595 * R + 38470 * G + 7471 * B ) >> 16;
@@ -132,7 +130,7 @@ R = Y + (91881 * Cr >> 16) - 179;
 G = Y -( ( 22544 * Cb + 46793 * Cr ) >> 16) + 135;
 B = Y + (116129 * Cb >> 16) - 226;
 ```
-######Problem 4: Image down- and up-sampling
+######Problem 3: Image down- and up-sampling
 Implement two functions. The first function accepts a YCbCr image and returns downsampled Cb and Cr channels according to 4:2:0 scheme.
 
 The second function acceptes downsampled version of YCbCr image and upsamples it by simply copying each value to the four nearest neighbors in up-sampled image.
