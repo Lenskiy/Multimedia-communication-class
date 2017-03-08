@@ -19,7 +19,7 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 7.	Delete second.c (_hint_: use rm)
 8.	Rename first.c to lab1.c (_hint_ use mv)
 
-###### Problem 2.  Install Eclipse. The process of eclipse installation and Java VM is performed in the shell. Run the shell by pressing *<ctrl>+<alt>+<t>*. 
+###### Problem 2.  Install Eclipse. The process of eclipse installation and Java VM is performed in the shell. 
 
 ###### Problem 3. Create a C project in Eclipse by giving the following name cbasic, 
 
