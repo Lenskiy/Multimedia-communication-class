@@ -19,7 +19,41 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 7.	Delete second.c (hint: use rm)
 8.	Rename first.c to lab1.c (hint use mv)
 
+###### Problem 2.  Install Eclipse. The process of eclipse installation and Java VM is performed in the shell. Run the shell by pressing <ctrl>+<alt>+<t>. 
 
+###### Problem 3. Create a C project in Eclipse by giving the following name cbasic, 
+
+1.	add new file main.c and type the following 
+```
+#include 
+
+int main(){
+printf("Hello world!");
+return 0;
+}
+```
+2.	Build and the following C program
+
+
+###### Problem 4. Create a C project in Eclipse by giving the following name ctest. Implement a simple program that copies the characters from the standard input and writes them to standard outputs until EOF  (end of file) symbol occurs.
+
+```
+#include 
+int main(){
+    int c;
+    while((c = getchar()) != EOF){
+        putchar(c);
+    }
+    return 0;
+}
+```
+
+Create a text file input.txt with some content and build the C program, then tests as follows:
+1.	Creating a text file using nano:
+`nano test.txt`
+exit and save the file by pressing Ctrl X
+2.	Run the compiled program and redirect the input form a keyboard to from a file:
+`./ctest < test.txt`
 
 ###Lab: Imaging basics
 
