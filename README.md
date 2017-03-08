@@ -10,14 +10,14 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 ###Lab: Command line interface in Linux, Building tools
 
 ###### Problem 1. Command Line Interface of Linux (See "The linux Command Line" textbook for further details)
-1.	Open terminal (hint: press Ctrl Alt t)
-2.	Create folder c_language in your home folder ~/ (hint: use mkdir)
-3.	Create folder lab1in the folder c_language (hint: use mkdir)
-4.	Enter the folder ~/c_language/lab1(hint: use cd)
-5.	Create file first.c (hint: use touch) 
-6.	Copy first.c to second.c in the same folder (hint: use cp)
-7.	Delete second.c (hint: use rm)
-8.	Rename first.c to lab1.c (hint use mv)
+1.	Open terminal (_hint_: press Ctrl Alt t)
+2.	Create folder c_language in your home folder ~/ (_hint_: use mkdir)
+3.	Create folder lab1in the folder c_language (_hint_: use mkdir)
+4.	Enter the folder ~/c_language/lab1(_hint_: use cd)
+5.	Create file first.c (_hint_: use touch) 
+6.	Copy first.c to second.c in the same folder (_hint_: use cp)
+7.	Delete second.c (_hint_: use rm)
+8.	Rename first.c to lab1.c (_hint_ use mv)
 
 ###### Problem 2.  Install Eclipse. The process of eclipse installation and Java VM is performed in the shell. Run the shell by pressing <ctrl>+<alt>+<t>. 
 
