@@ -69,13 +69,13 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 ###### Problem 3. Create a C project in Eclipse by giving the following name cbasic, 
 
 1.	add new file main.c and type the following 
-```
-#include 
+	```
+	#include 
 
-int main(){
-printf("Hello world!");
-return 0;
-}
+	int main(){
+	printf("Hello world!");
+	return 0;
+	}
 ```
 2.	Build and the following C program
 
@@ -96,11 +96,11 @@ int main(){
 Create a text file input.txt with some content and build the C program, then tests as follows:
 
 1.	Creating a text file using nano:
-`nano test.txt`
-exit and save the file by pressing Ctrl X
+	`nano test.txt`
+	exit and save the file by pressing Ctrl X
 
 2.	Run the compiled program and redirect the input form a keyboard to from a file:
-`./ctest < test.txt`
+	`./ctest < test.txt`
 
 ###Lab: Imaging basics
 
