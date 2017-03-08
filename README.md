@@ -1,4 +1,11 @@
-# Multimedia communication
+# Multimedia communication and digital broadcasting
+
+###Lab 1: Course description
+
+
+You have probably heard of such big names as Kakao talk, Skype, WhatsApp, or Tango. Well, all of these apps cost billions of dollars and were established just a few years ago. The core technologies of these apps are text messaging, and real-time communication and lossy/lossless compression. The text messaging part is relatively easy to implement and is based on network sockets; we will briefly discuss them. However, the multimedia communication, i.e. transmission of audio and video is more sophisticated because of two reasons. Firstly, multimedia content is very heavy and as result requires compression. Secondly, often audio and video have to be transferred in real-time over unreliable channels, so packets can be lost, or received in a wrong order.  All these issues have to be addressed.
+Thus, in this course we will focus on the theory and the practice of broadcasting of multimedia content. First, we cover the real-time transfer protocol (RTP) and Real Time Control Protocol (RTCP) as well as streaming over TCP and HTTP, that are used for delivering almost any kind of multimedia content. Then, we will study coding theory and the coding standards that include JPEG (Motion JPEG), H.26x and MPEG. These standards are also used in many Internet Video Broadcasting services; the most famous example is YouTube service.  
+
 
 ###Lab 1: Imaging basics
 
