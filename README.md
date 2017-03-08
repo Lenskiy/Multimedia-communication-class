@@ -226,6 +226,9 @@ char huff_decode2(unsigned char htree[], int N, unsigned char buffer[], unsigned
 }
 ```
 
+###Lab: Socket programming
+
+###Lab: Broadcasting over HTTP
 
 ###Lab: Real-time Transfer Protocol
 
