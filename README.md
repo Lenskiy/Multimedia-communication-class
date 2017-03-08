@@ -9,6 +9,18 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 
 ###Lab: Command line interface in Linux, Building tools
 
+###### Problem 1. Command Line Interface of Linux (See "The linux Command Line" textbook for further details)
+* (a)	Open terminal (hint: press Ctrl Alt t)
+* (b)	Create folder c_language in your home folder ~/ (hint: use mkdir)
+* (c)	 Create folder lab1in the folder c_language (hint: use mkdir)
+* (d)	 Enter the folder ~/c_language/lab1(hint: use cd)
+* (e)	 Create file first.c (hint: use touch) 
+* (f)	Copy first.c to second.c in the same folder (hint: use cp)
+* (g)	 Delete second.c (hint: use rm)
+* (h)	 Rename first.c to lab1.c (hint use mv)
+
+
+
 ###Lab: Imaging basics
 
 ######Problem 1: Implement two functions, one for reading and one for writing of the PGM P5(binary, greyscale) and P6(binary, color) types
