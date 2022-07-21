@@ -76,8 +76,9 @@ Thus, in this course we will focus on the theory and the practice of broadcastin
 	printf("Hello world!");
 	return 0;
 	}
-```
+	```
 2.	Build and the following C program
+
 
 
 ###### Problem 4. Create a C project in Eclipse by giving the following name ctest. Implement a simple program that copies the characters from the standard input and writes them to standard outputs until EOF  (end of file) symbol occurs.
@@ -102,9 +103,10 @@ Create a text file input.txt with some content and build the C program, then tes
 2.	Run the compiled program and redirect the input form a keyboard to from a file:
 	`./ctest < test.txt`
 
-###Lab: Imaging basics
 
-######Problem 1: Implement two functions, one for reading and one for writing of the PGM P5(binary, greyscale) and P6(binary, color) types
+### Lab: Imaging basics
+
+###### Problem 1: Implement two functions, one for reading and one for writing of the PGM P5(binary, greyscale) and P6(binary, color) types
 
 The header for PGM files is defined as a C structure
 
@@ -116,7 +118,7 @@ struct image_header{
     int levels;     //Number of gray/each color levels
 };
 ```
-######Problem 2: Implement RGB to YCbCr and YCbCr to RGB color space conversion
+###### Problem 2: Implement RGB to YCbCr and YCbCr to RGB color space conversion
 
 The formulas for transforming RGB to YCbCr color spaces using integer arithmetics are given below
 ```
@@ -130,20 +132,20 @@ R = Y + (91881 * Cr >> 16) - 179;
 G = Y -( ( 22544 * Cb + 46793 * Cr ) >> 16) + 135;
 B = Y + (116129 * Cb >> 16) - 226;
 ```
-######Problem 3: Image down- and up-sampling
+###### Problem 3: Image down- and up-sampling
 Implement two functions. The first function accepts a YCbCr image and returns downsampled Cb and Cr channels according to 4:2:0 scheme.
 
 The second function acceptes downsampled version of YCbCr image and upsamples it by simply copying each value to the four nearest neighbors in up-sampled image.
 ![alt text](http://i.stack.imgur.com/768xM.png "4:2:0")
 
-######Problem 5: Calculate PSNR
+###### Problem 4: Calculate PSNR
 Implement a function that accepts two argumetns, which is an original image and areconstructed image and returns Peak Signal-to-Noise Ratio (PSNR). The PSNR is calcualted as follows
 
 `MSE = (1/(m*n))*sum(sum((f-g).^2))`
 
 `PSNR = 20*log(max(max(f)))/((MSE)^0.5)`
 
-######Problem 6: All the above functions should be tested in the following final program
+###### Problem 5: All the above functions should be tested in the following final program
 
 * Read a color PPM image.
 * Equalize histogram
@@ -156,7 +158,7 @@ Implement a function that accepts two argumetns, which is an original image and 
 
 ###Lab: Information theory
 
-######Problem 1: Implement a function that calculates the information entropy (Shannon entropy) of a given data.
+###### Problem 1: Implement a function that calculates the information entropy (Shannon entropy) of a given data.
 
 * To test the implemented code for entropy estimation, use the source code program as an input:
 
@@ -182,43 +184,43 @@ int main() {
 ```
 * Use two given PBM files: `nature.pbm` and 'urban.pbm' as inputs for your program, compare the entropies of these files.
 
-######Problem 2: Compare the Shannon's entropy and the Kolmogorov's complexity
+###### Problem 2: Compare the Shannon's entropy and the Kolmogorov's complexity
 
 Modify your program in such way that its source size is minimized, then calculate its entropy and Kolmogorov complexity then compare them with the original code’s entropies and Kolmogorov complexity.
 
-###Lab: Block representation
+### Lab: Block representation
 
-######Problem 1: Implement the function that splits a grayscale image into an array of blocks of a given size
+###### Problem 1: Implement the function that splits a grayscale image into an array of blocks of a given size
 
-######Problem 2: Implement the function that splits an RGB image into RGB macroblocks of 16x16 size
+###### Problem 2: Implement the function that splits an RGB image into RGB macroblocks of 16x16 size
 
-######Problem 3: Implement the function that splits an RGB image into macroblocks and converts them to YCbCr using 4:2:0  
+###### Problem 3: Implement the function that splits an RGB image into macroblocks and converts them to YCbCr using 4:2:0  
 
-###Lab: Discrete cosine transform
+### Lab: Discrete cosine transform
 
-######Problem 1.  Test the DCT and IDCT functions
+###### Problem 1.  Test the DCT and IDCT functions
 
 Build and test the DCT and IDCT functions.
 
-######Problem 2. Increase the block size and test it on an image of the same size
+###### Problem 2. Increase the block size and test it on an image of the same size
 
 Modify the above program by increasing the block size to 64 by 64, and instead of using an artificially generated input image, load a grayscale image 64 x 64  and use it as an input.
 
-######Problem 3. Implement simple frequency filtering
+###### Problem 3. Implement simple frequency filtering
 
 * After calculating DCT in the previous problem set high frequency components  (i.e 64 < u + v) to zero and then invoke IDCT.
 * Repeate the same experiemnt but this time remove lowe frequencies (i.e. u + v < 8) but keep the zero frequency F(0,0) untouched.
 
-######Problem 4. Split an image into blocks and apply DCT and IDCT on each of them
+###### Problem 4. Split an image into blocks and apply DCT and IDCT on each of them
 
 Implement a function that splits an input image into blocks of 8 by 8 size and call DCT and IDCT on each block. For partitioning an image into blocks see previous lab.
 
-######Problem 5. Block based filtering
+###### Problem 5. Block based filtering
 
 In the previous problem set higher frequency components in each DCT block to zero.
 
  
-###Lab:  Image compression via DCT coefficients quantization and Run-level coding
+### Lab:  Image compression via DCT coefficients quantization and Run-level coding
 
 So far we implemented RGB to YCbCr conversion and splitting an image into 8 x 8 blocks following 4:2:0 convention.
 We implemented a simple DCT and IDCT algorithms. In this lab the functions for forward and inverse quantization,
@@ -226,7 +228,7 @@ zigzag reordering and run-level encoding and decoding are studied. The task of t
 to test presented functions in one program. The programs should read a PBM file, compress it
 using the above functions and then decompress it and stored in a file.
 
-######Problem 1.  Implement an encoder program that performs the following steps
+###### Problem 1.  Implement an encoder program that performs the following steps
 * Read a grayscale P5 type PBM image
 * Split into 8 x 8 blocks and apply DCT to every block
 * Quantize DCT coefficients
@@ -236,7 +238,7 @@ using the above functions and then decompress it and stored in a file.
 __./encode image.pbm > run3d.code__
 
 
-######Problem 2.  Implement a decoder program that performs the following steps
+###### Problem 2.  Implement a decoder program that performs the following steps
 
 * Read run-level code from a standard input. To do so, redirect standard input form a keyboard to from a file i.e.
 __./encode image_t.pbm < run3d.code__
@@ -247,7 +249,7 @@ __./encode image_t.pbm < run3d.code__
 * Store the reconstructed image into a PBM file
 
 
-######Problem 3. Compare original and reconstructed images
+###### Problem 3. Compare original and reconstructed images
 
 * Read original image.pbm and reconstructed image_t.pbm
 * Calculate and print out the PSNR. The PSNR is calculated as follows
@@ -259,7 +261,7 @@ __./encode image_t.pbm < run3d.code__
 
 ###Lab:  Huffman coding
 
-######Problem 1. Huffman tree traversal
+###### Problem 1. Huffman tree traversal
 
 * Implement the following code:
 ```
@@ -296,7 +298,7 @@ int main(int argc, const char * argv[]) {
 * Feel up htree with a different Huffman tree
 * Change content of the buffer accordingly
 
-######Problem 2. Alternative repesenation of a Huffman tree
+###### Problem 2. Alternative repesenation of a Huffman tree
 * Change and test the modified decoding function given as follows:
 ```
 char huff_decode2(unsigned char htree[], int N, unsigned char buffer[], unsigned long *bit_num){
@@ -318,13 +320,13 @@ char huff_decode2(unsigned char htree[], int N, unsigned char buffer[], unsigned
 }
 ```
 
-###Lab: Socket programming
+### Lab: Socket programming
 
-###Lab: Broadcasting over HTTP
+### Lab: Broadcasting over HTTP
 
-###Lab: Real-time Transfer Protocol
+### Lab: Real-time Transfer Protocol
 
-######Problem 1:  Download the source codes attached. Build sender and receiver. To build use the following commands in the terminal:
+###### Problem 1:  Download the source codes attached. Build sender and receiver. To build use the following commands in the terminal:
 __gcc receiver.c rtp.c -o receiver__
 
 __gcc sender.c rtp.c -o sender__
@@ -340,11 +342,11 @@ __./sender 127.0.0.1 12345 < image.jpg__
 where 12345 is a port of a receiver and image.jpg is your image file.
 The symbols < and > are used to redirect standard output and input.  By typing sender < image.jpg we redirect input from a file, instead of a keyboard and by typing receiver > image_rcv.jpg  we redirect output to  a file instead of a screen.
 
-######Problem 2:  Study source codes very carefully and add detailed comments for as many statements as you think is necessary, keeping in mind that the more the better. The goal of this problem is to understand the codes in depth.  
+###### Problem 2:  Study source codes very carefully and add detailed comments for as many statements as you think is necessary, keeping in mind that the more the better. The goal of this problem is to understand the codes in depth.  
 
 
 
-###Final project
+### Final project
 
 The goal of the project is to develop image transmission software that uses RTP as a transport. Before the transmission an image is compressed. 
 
